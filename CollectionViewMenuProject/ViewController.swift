@@ -55,11 +55,27 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     func collectionView(_ collectionView: UICollectionView, contextMenuConfigurationForItemAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {
         let config = UIContextMenuConfiguration(identifier: nil,
                                                 previewProvider: nil) { _ in
+            let open = UIAction(title: "Open",
+                                image: UIImage(systemName: "link"),
+                                identifier: nil,
+                                discoverabilityTitle: nil,
+                                state: .off) { _ in
+                                print("Super Special Functional Code .exe")
+            }
+            
+            let favorite = UIAction(title: "Favorite",
+                                image: UIImage(systemName: "star"),
+                                identifier: nil,
+                                discoverabilityTitle: nil,
+                                state: .off) { _ in
+                                print("Favs .exe")
+            }
+            
             return UIMenu(title: "",
                           image: nil,
                           identifier: nil,
                           options: UIMenu.Options.displayInline,
-                          children: [])
+                          children: [open, favorite])
         }
         return config
     }
